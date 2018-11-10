@@ -36,10 +36,14 @@ public class SlaveQuota {
             if (carteStatus == null) continue;
             vo = CarteStatusVo.parseXml(carteStatus);
             //组装节点指标对象
-            String hostInfo = cc.getSlaveHostInfo();
-            String memFree = hostInfo.split("\\$")[0];
-            String diskFree = hostInfo.split("\\$")[1];
-            String cpuUsage = hostInfo.split("\\$")[2];
+//            String hostInfo = cc.getSlaveHostInfo();
+//            String memFree = hostInfo.split("\\$")[0];
+//            String diskFree = hostInfo.split("\\$")[1];
+//            String cpuUsage = hostInfo.split("\\$")[2];
+          String memFree = "1855084kb";
+          String diskFree = "15GB";
+          String cpuUsage = "0.20000000000001284%";
+          
             carteInfo = new CarteInfoEntity(StringDateUtil.stringToDate(nDate, "yyyy-MM-dd HH:mm:ss"), cc.getSlave().getSlaveId(), vo.getThreadCount(), vo.getRunningJobNum(),
                     vo.getRunningTransNum(), (int) vo.getFreeMem(), (int) vo.getTotalMem(), vo.getFreeMemPercent(),
                     (float) vo.getLoadAvg(), null, null, memFree, cpuUsage, diskFree);
